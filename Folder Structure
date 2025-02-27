@@ -6,3 +6,255 @@
   index.html
   machine-setup-card.html
   parameter-sheet.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Setup</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h1>Welcome to the Machine Setup Portal</h1>
+    <nav>
+        <ul>
+            <li><a href="machine-setup-card.html">Machine Setup Card</a></li>
+            <li><a href="parameter-sheet.html">Parameter Sheet</a></li>
+        </ul>
+    </nav>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+document.getElementById('processSheetForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const formEntries = Object.fromEntries(formData.entries());
+
+    console.log('Form submitted successfully:', formEntries);
+    
+    // Implement your form submission logic here (e.g., send data to a server)
+
+    alert('Form submitted successfully!');
+    event.target.reset();
+});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Setup Card</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h2>Machine Setup Form</h2>
+    <form id="setupForm">
+        <label for="machineID">Machine ID:</label>
+        <input type="text" id="machineID" required><br>
+
+        <label for="toolID">Tool ID:</label>
+        <input type="text" id="toolID" required><br>
+
+        <label for="setupDetails">Setup Observations:</label>
+        <textarea id="setupDetails" required></textarea><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Existing Setups</h2>
+    <div id="existingSetups"></div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parameter Sheet</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <h2>Parameter Sheet Form</h2>
+    <form id="parameterSheetForm">
+        <label for="partDescription">Part Description:</label>
+        <input type="text" id="partDescription" required><br>
+
+        <label for="numberOfCavity">Number of Cavity:</label>
+        <input type="number" id="numberOfCavity" required><br>
+
+        <!-- Add all other fields as needed, similar to the example provided -->
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.setup-entry {
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.setup-entry button {
+    background-color: #337ab7;
+    margin-top: 10px;
+}
+
+.setup-entry button:hover {
+    background-color: #286090;
+}
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('setupForm')) {
+        document.getElementById('setupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const machineID = document.getElementById('machineID').value;
+            const toolID = document.getElementById('toolID').value;
+            const setupDetails = document.getElementById('setupDetails').value;
+
+            if (machineID && toolID && setupDetails) {
+                const setupData = {
+                    machineID: machineID,
+                    toolID: toolID,
+                    setupDetails: setupDetails
+                };
+
+                // Implement your form submission logic here (e.g., send data to a server)
+
+                alert('Form submitted successfully!');
+                document.getElementById('setupForm').reset();
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+    }
+
+    if (document.getElementById('parameterSheetForm')) {
+        document.getElementById('parameterSheetForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const formEntries = Object.fromEntries(formData.entries());
+
+            console.log('Form submitted successfully:', formEntries);
+
+            // Implement your form submission logic here (e.g., send data to a server)
+
+            alert('Form submitted successfully!');
+            document.getElementById('parameterSheetForm').reset();
+        });
+    }
+});
