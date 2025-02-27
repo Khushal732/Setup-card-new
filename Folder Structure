@@ -1,0 +1,8 @@
+/project-directory
+  /styles
+    styles.css
+  /scripts
+    script.js
+  index.html
+  machine-setup-card.html
+  parameter-sheet.html
